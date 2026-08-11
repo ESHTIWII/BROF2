@@ -1,101 +1,606 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BROF</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BROF | Official</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-        body {
-            background: #080808;
-            color: white;
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .container {
-            width: 90%;
-            max-width: 600px;
-        }
+body{
+    background:#070b13;
+    color:#fff;
+}
 
-        .logo {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            margin-bottom: 25px;
-            background: #181818;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            font-weight: bold;
-            box-shadow: 0 0 40px #ffffff20;
-        }
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    background:#071a35;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:45px;
+    z-index:1000;
+    box-shadow:0 4px 20px rgba(0,0,0,.35);
+}
 
-        h1 {
-            font-size: 55px;
-            letter-spacing: 8px;
-            margin-bottom: 10px;
-        }
+nav a{
+    color:#cbd8ea;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.25s;
+}
 
-        p {
-            color: #999;
-            font-size: 18px;
-            margin-bottom: 35px;
-        }
+nav a:hover{
+    color:#4da3ff;
+}
 
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+.logo{
+    position:absolute;
+    left:30px;
+    font-size:25px;
+    font-weight:900;
+    color:#fff;
+}
 
-        .links a {
-            text-decoration: none;
-            color: white;
-            background: #151515;
-            padding: 17px;
-            border-radius: 12px;
-            transition: 0.3s;
-            border: 1px solid #292929;
-        }
+.logo span{
+    color:#258cff;
+}
 
-        .links a:hover {
-            transform: scale(1.03);
-            background: #222;
-        }
-    </style>
+/* HERO */
+.hero{
+    min-height:100vh;
+    padding-top:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+    radial-gradient(circle at center,#0d2b52 0%,#070b13 55%);
+}
+
+.hero-content{
+    max-width:800px;
+    padding:30px;
+}
+
+.profile{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #258cff;
+    box-shadow:0 0 35px rgba(37,140,255,.4);
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.hero h1 span{
+    color:#258cff;
+}
+
+.hero p{
+    color:#9baabd;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:13px 25px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    background:#258cff;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(37,140,255,.3);
+}
+
+.btn.dark{
+    background:#111c2d;
+}
+
+/* GENERAL */
+section{
+    padding:100px 7%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.title h2{
+    font-size:35px;
+}
+
+.title p{
+    color:#718096;
+    margin-top:10px;
+}
+
+/* DONATION */
+.donation{
+    background:#09111e;
+}
+
+.donation-card{
+    max-width:700px;
+    margin:auto;
+    background:#0d1727;
+    border:1px solid #172b45;
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+}
+
+.donation-card h3{
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.donation-card p{
+    color:#8fa0b5;
+    margin-bottom:25px;
+}
+
+/* LAST STREAM */
+.stream-card{
+    max-width:900px;
+    margin:auto;
+    background:#0d1727;
+    border:1px solid #172b45;
+    border-radius:18px;
+    padding:30px;
+}
+
+.stream-info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.info{
+    background:#09111e;
+    padding:25px;
+    border-radius:13px;
+    text-align:center;
+}
+
+.info small{
+    display:block;
+    color:#728197;
+    margin-bottom:8px;
+}
+
+.info strong{
+    color:#fff;
+}
+
+/* STATS */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.stat{
+    background:#0d1727;
+    border:1px solid #172b45;
+    padding:30px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.stat .number{
+    font-size:35px;
+    font-weight:900;
+    color:#258cff;
+}
+
+.stat p{
+    color:#8291a5;
+    margin-top:7px;
+}
+
+/* GIFTERS */
+.gifters{
+    max-width:800px;
+    margin:auto;
+}
+
+.gifter{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    background:#0d1727;
+    border:1px solid #172b45;
+    padding:18px 22px;
+    border-radius:14px;
+    margin-bottom:12px;
+}
+
+.rank{
+    font-size:23px;
+    font-weight:bold;
+    color:#258cff;
+    width:35px;
+}
+
+.gifter-name{
+    flex:1;
+    font-weight:bold;
+}
+
+.gifter-amount{
+    color:#8fa0b5;
+}
+
+/* SOCIAL */
+.social{
+    background:#09111e;
+}
+
+.social-grid{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.social-card{
+    background:#0d1727;
+    border:1px solid #172b45;
+    border-radius:15px;
+    padding:25px 10px;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    transition:.25s;
+}
+
+.social-card:hover{
+    transform:translateY(-5px);
+    border-color:#258cff;
+}
+
+.social-card span{
+    display:block;
+    color:#258cff;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+/* MODS */
+.mods{
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.mod{
+    background:#0d1727;
+    border:1px solid #172b45;
+    padding:20px 30px;
+    border-radius:13px;
+    color:#b7c4d4;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#050910;
+    color:#526174;
+    font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    nav{
+        gap:15px;
+        height:60px;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+
+    .logo{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .stream-info{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .social-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    section{
+        padding:80px 5%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container">
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">BR<span>OF</span></div>
 
-        <div class="logo">B</div>
+    <a href="#donation">DONATION & SUPPORT</a>
+    <a href="#mods">MODS</a>
+    <a href="#social">SOCIAL</a>
+    <a href="#home">HOME</a>
+</nav>
 
-        <h1>BROF</h1>
 
-        <p>Streamer</p>
+<!-- HOME -->
+<section class="hero" id="home">
+    <div class="hero-content">
 
-        <div class="links">
-            <a href="#">Kick</a>
-            <a href="#">YouTube</a>
-            <a href="#">TikTok</a>
-            <a href="#">Instagram</a>
+        <!-- تقدر تغير الصورة هنا -->
+        <img class="profile"
+        src="https://placehold.co/300x300/071a35/258cff?text=BROF"
+        alt="BROF">
+
+        <h1>BO<span>RF</span></h1>
+
+        <p>
+            Welcome to BROF's official website.
+            <br>
+            هنا تقدر تعرف آخر بثوث بروف وحساباته وطرق دعمه.
+        </p>
+
+        <div class="buttons">
+            <a class="btn" href="https://kick.com/brof2" target="_blank">
+                🔴 WATCH KICK
+            </a>
+
+            <a class="btn dark" href="#social">
+                SOCIAL
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- DONATION -->
+<section id="donation" class="donation">
+
+    <div class="title">
+        <h2>Donation & Support</h2>
+        <p>Support BROF</p>
+    </div>
+
+    <div class="donation-card">
+
+        <h3>❤️ Support BROF</h3>
+
+        <p>
+            إذا حاب تدعم بروف، تقدر تستخدم رابط الدونيشن الرسمي.
+        </p>
+
+        <a class="btn"
+           href="https://tip.dokan.sa/brof2"
+           target="_blank">
+           DONATE
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- LAST STREAM -->
+<section>
+
+    <div class="title">
+        <h2>Last Stream</h2>
+        <p>آخر بث لبروف</p>
+    </div>
+
+    <div class="stream-card">
+
+        <div class="stream-info">
+
+            <div class="info">
+                <small>TIME SINCE LAST STREAM</small>
+                <strong>Recently</strong>
+            </div>
+
+            <div class="info">
+                <small>STREAM TITLE</small>
+                <strong>Last BROF Stream</strong>
+            </div>
+
+            <div class="info">
+                <small>CATEGORY</small>
+                <strong>GTA V</strong>
+            </div>
+
         </div>
 
     </div>
 
+</section>
+
+
+<!-- STATS -->
+<section>
+
+    <div class="title">
+        <h2>Kick Stats</h2>
+        <p>إحصائيات بروف</p>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="number">150K+</div>
+            <p>Followers</p>
+        </div>
+
+        <div class="stat">
+            <div class="number">SUB</div>
+            <p>Subscriber Badge</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TOP GIFTERS -->
+<section>
+
+    <div class="title">
+        <h2>Top Gifters</h2>
+        <p>أكثر الداعمين</p>
+    </div>
+
+    <div class="gifters">
+
+        <div class="gifter">
+            <div class="rank">#1</div>
+            <div class="gifter-name">Coming Soon</div>
+            <div class="gifter-amount">—</div>
+        </div>
+
+        <div class="gifter">
+            <div class="rank">#2</div>
+            <div class="gifter-name">Coming Soon</div>
+            <div class="gifter-amount">—</div>
+        </div>
+
+        <div class="gifter">
+            <div class="rank">#3</div>
+            <div class="gifter-name">Coming Soon</div>
+            <div class="gifter-amount">—</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SOCIAL -->
+<section class="social" id="social">
+
+    <div class="title">
+        <h2>Social</h2>
+        <p>تابع بروف على حساباته</p>
+    </div>
+
+    <div class="social-grid">
+
+        <a class="social-card"
+           href="https://tiktok.com/@b80"
+           target="_blank">
+            <span>TIKTOK</span>
+            @b80
+        </a>
+
+        <a class="social-card"
+           href="https://discord.gg/Migo"
+           target="_blank">
+            <span>DISCORD</span>
+            Community
+        </a>
+
+        <a class="social-card"
+           href="https://x.com/N4wav_"
+           target="_blank">
+            <span>X</span>
+            @N4wav_
+        </a>
+
+        <a class="social-card"
+           href="https://instagram.com/n4wav"
+           target="_blank">
+            <span>INSTAGRAM</span>
+            @n4wav
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- MODS -->
+<section id="mods">
+
+    <div class="title">
+        <h2>Mods</h2>
+        <p>مشرفين بروف</p>
+    </div>
+
+    <div class="mods">
+
+        <div class="mod">Coming Soon</div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 BROF — All Rights Reserved
+</footer>
+
 </body>
 </html>
-
