@@ -3,584 +3,391 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BROF2 | Streamer</title>
+<title>BROF2</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:Arial,sans-serif;
+background:#020812;
+color:#fff;
+overflow-x:hidden
 }
 
-html {
-    scroll-behavior: smooth;
+/* SPACE */
+.space{
+position:fixed;
+inset:0;
+z-index:-5;
+background:
+radial-gradient(circle at 20% 20%,#07345b,transparent 30%),
+radial-gradient(circle at 80% 70%,#15184a,transparent 35%),
+linear-gradient(#020812,#01030a)
+}
+.stars{
+position:absolute;
+inset:0;
+background-image:
+radial-gradient(#fff 1px,transparent 1px),
+radial-gradient(#59d9ff 1px,transparent 1px);
+background-size:90px 90px,150px 150px;
+animation:stars 40s linear infinite
+}
+@keyframes stars{
+from{transform:translateY(0)}
+to{transform:translateY(300px)}
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #020812;
-    color: white;
-    overflow-x: hidden;
+/* NAV */
+.navbar{
+position:fixed;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+width:94%;
+max-width:1100px;
+z-index:100;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:12px 20px;
+border-radius:18px;
+background:rgba(2,25,48,.94);
+border:1px solid rgba(60,200,255,.4);
+box-shadow:0 0 30px rgba(0,130,255,.2);
+backdrop-filter:blur(12px)
+}
+.logo-mini{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:bold;
+letter-spacing:2px
+}
+.logo-mini img{
+width:42px;
+height:42px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid #55ddff
+}
+.nav-links{
+display:flex;
+gap:6px;
+direction:rtl
+}
+.nav-links a{
+color:#dff6ff;
+text-decoration:none;
+padding:11px 13px;
+border-radius:10px;
+font-size:13px;
+transition:.25s
+}
+.nav-links a:hover{
+background:#07517d;
+box-shadow:0 0 15px #0879b5
 }
 
-/* =========================
-   SPACE BACKGROUND
-========================= */
-
-.space {
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-    background:
-        radial-gradient(circle at 20% 20%, #082c4f 0%, transparent 30%),
-        radial-gradient(circle at 80% 70%, #10183c 0%, transparent 35%),
-        linear-gradient(180deg, #020812, #03050d 70%, #010207);
+/* HERO */
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding-top:120px
+}
+.hero-logo{
+width:155px;
+height:155px;
+object-fit:cover;
+border-radius:50%;
+border:3px solid #63ddff;
+box-shadow:0 0 25px #0798d8,0 0 70px #07557c;
+animation:float 3s ease-in-out infinite
+}
+@keyframes float{
+50%{transform:translateY(-12px)}
+}
+.hero h1{
+font-size:clamp(45px,8vw,85px);
+letter-spacing:12px;
+margin-top:25px;
+text-shadow:0 0 30px #0da9ed
+}
+.hero p{
+margin-top:12px;
+font-size:18px;
+color:#91c9e5
 }
 
-.stars,
-.stars::before,
-.stars::after {
-    position: absolute;
-    inset: 0;
-    content: "";
-    background-image:
-        radial-gradient(circle, white 1px, transparent 1px),
-        radial-gradient(circle, #71dfff 1px, transparent 1px),
-        radial-gradient(circle, white 1px, transparent 1px);
-    background-size: 90px 90px, 140px 140px, 210px 210px;
-    background-position: 0 0, 30px 60px, 80px 20px;
-    opacity: .55;
+/* CARS */
+.car{
+position:fixed;
+z-index:-2;
+width:180px;
+pointer-events:none;
+filter:drop-shadow(0 0 12px white) drop-shadow(0 0 25px #19bfff)
+}
+.car1{
+left:5%;
+top:-250px;
+animation:fall1 10s linear infinite
+}
+.car2{
+left:55%;
+top:-300px;
+animation:fall2 13s linear infinite 3s
+}
+.car3{
+left:82%;
+top:-250px;
+width:145px;
+animation:fall3 11s linear infinite 6s
+}
+@keyframes fall1{
+to{transform:translate(400px,130vh) rotate(20deg)}
+}
+@keyframes fall2{
+to{transform:translate(-450px,130vh) rotate(-20deg)}
+}
+@keyframes fall3{
+to{transform:translate(-250px,130vh) rotate(-15deg)}
 }
 
-.stars::before {
-    animation: starsMove 35s linear infinite;
-    opacity: .25;
+/* SECTIONS */
+.section{
+width:92%;
+max-width:1000px;
+margin:0 auto 30px;
+padding:30px;
+background:rgba(3,18,32,.85);
+border:1px solid rgba(60,190,255,.22);
+border-radius:22px;
+backdrop-filter:blur(10px)
+}
+.section-title{
+color:#65ddff;
+font-size:24px;
+margin-bottom:22px
 }
 
-.stars::after {
-    animation: starsMove 60s linear infinite reverse;
-    opacity: .2;
+/* STATS */
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px
+}
+.stat{
+padding:25px 10px;
+text-align:center;
+background:rgba(0,35,60,.7);
+border-radius:15px;
+border:1px solid rgba(70,200,255,.2)
+}
+.stat-number{
+font-size:30px;
+font-weight:bold;
+color:#63ddff
+}
+.stat-label{
+margin-top:8px;
+color:#8daabd
 }
 
-@keyframes starsMove {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(300px);
-    }
+/* STREAM */
+.stream-info{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px
+}
+.info{
+padding:20px;
+background:rgba(0,30,52,.7);
+border-radius:14px;
+border:1px solid rgba(70,190,255,.18)
+}
+.info small{
+display:block;
+color:#718da1;
+margin-bottom:8px
+}
+.info strong{
+font-size:17px
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* BADGES */
+.badges{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:10px
+}
+.badge{
+height:115px;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+background:#031b30;
+border-radius:15px;
+border:1px solid rgba(80,200,255,.2);
+animation:badge 2.5s ease-in-out infinite
+}
+.badge:nth-child(2){animation-delay:.2s}
+.badge:nth-child(3){animation-delay:.4s}
+.badge:nth-child(4){animation-delay:.6s}
+.badge:nth-child(5){animation-delay:.8s}
+.badge:nth-child(6){animation-delay:1s}
 
-.navbar {
-    position: fixed;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1100px, 94%);
-    height: 70px;
-    z-index: 1000;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 22px;
-
-    background: rgba(2, 25, 48, .92);
-    border: 1px solid rgba(76, 197, 255, .35);
-    border-radius: 18px;
-
-    box-shadow:
-        0 0 25px rgba(0, 130, 255, .18),
-        inset 0 0 20px rgba(0, 140, 255, .05);
-
-    backdrop-filter: blur(12px);
+.badge img{
+width:100%;
+height:100%;
+object-fit:cover;
+transform:scale(1.8);
+filter:drop-shadow(0 0 12px #20caff)
+}
+.badge:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(110deg,transparent,rgba(255,255,255,.4),transparent);
+transform:translateX(-120%);
+animation:shine 2.5s infinite
+}
+@keyframes badge{
+50%{
+transform:translateY(-7px) scale(1.04);
+box-shadow:0 0 25px rgba(20,190,255,.3)
+}
+}
+@keyframes shine{
+50%{transform:translateX(120%)}
+}
+.tier{
+position:absolute;
+bottom:5px;
+background:rgba(0,0,0,.65);
+padding:4px 8px;
+border-radius:8px;
+font-size:10px
 }
 
-.logo-mini {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: bold;
-    letter-spacing: 2px;
+/* GIFTERS */
+.gifters{
+display:grid;
+gap:10px
+}
+.gifter{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:16px 18px;
+background:rgba(0,30,52,.7);
+border-radius:13px;
+border:1px solid rgba(70,190,255,.15)
+}
+.rank{
+width:38px;
+height:38px;
+border-radius:50%;
+background:#073e63;
+display:grid;
+place-items:center;
+color:#6bddff;
+font-weight:bold
+}
+.gleft{
+display:flex;
+align-items:center;
+gap:12px
+}
+.amount{
+color:#62dcff;
+font-weight:bold
 }
 
-.logo-mini img {
-    width: 43px;
-    height: 43px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #55dfff;
+/* LINKS */
+.links{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
+}
+.link{
+padding:17px;
+text-align:center;
+color:white;
+text-decoration:none;
+background:#062d4a;
+border-radius:12px;
+border:1px solid rgba(70,190,255,.2);
+transition:.25s
+}
+.link:hover{
+transform:translateY(-3px);
+background:#07527f;
+box-shadow:0 0 20px rgba(30,180,255,.25)
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    direction: rtl;
+/* DONATION */
+.donation{text-align:center}
+.donation a{
+display:inline-block;
+padding:16px 30px;
+border-radius:12px;
+background:#086ba3;
+color:white;
+text-decoration:none;
+font-weight:bold
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: #dcefff;
-    padding: 11px 14px;
-    border-radius: 10px;
-    font-size: 14px;
-    transition: .25s;
+footer{
+text-align:center;
+padding:40px;
+color:#607d90
 }
 
-.nav-links a:hover {
-    background: #064c78;
-    color: white;
-    box-shadow: 0 0 15px rgba(41, 185, 255, .3);
+/* MOBILE */
+@media(max-width:700px){
+.navbar{
+flex-direction:column;
+gap:8px
 }
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 100vh;
-    padding-top: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+.nav-links{
+flex-wrap:wrap;
+justify-content:center
 }
-
-.hero-content {
-    width: min(1000px, 92%);
-    text-align: center;
+.nav-links a{
+font-size:11px;
+padding:8px
 }
-
-.hero-logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #5fe4ff;
-
-    box-shadow:
-        0 0 20px #0b8ac4,
-        0 0 60px rgba(0, 170, 255, .3);
-
-    animation: logoFloat 3s ease-in-out infinite;
+.hero{
+padding-top:170px
 }
-
-@keyframes logoFloat {
-    0%,100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
+.hero-logo{
+width:120px;
+height:120px
 }
-
-.hero h1 {
-    margin-top: 25px;
-    font-size: clamp(42px, 8vw, 85px);
-    letter-spacing: 10px;
-    text-shadow: 0 0 30px #159ddd;
+.section{
+padding:22px 15px
 }
-
-.hero p {
-    margin-top: 12px;
-    color: #94c9e5;
-    font-size: 18px;
+.stats{
+grid-template-columns:1fr
 }
-
-/* =========================
-   FALLING CARS
-========================= */
-
-.car {
-    position: fixed;
-    z-index: -2;
-    width: 180px;
-    pointer-events: none;
-    filter:
-        drop-shadow(0 0 12px rgba(255,255,255,.8))
-        drop-shadow(0 0 25px #28baff);
-    opacity: .85;
+.stream-info{
+grid-template-columns:1fr
 }
-
-.car1 {
-    top: -250px;
-    left: 8%;
-    animation: meteor1 10s linear infinite;
+.badges{
+grid-template-columns:repeat(3,1fr)
 }
-
-.car2 {
-    top: -300px;
-    left: 58%;
-    animation: meteor2 13s linear infinite 4s;
+.links{
+grid-template-columns:1fr
 }
-
-.car3 {
-    top: -300px;
-    left: 82%;
-    width: 150px;
-    animation: meteor3 11s linear infinite 7s;
+.car{
+width:120px
 }
-
-@keyframes meteor1 {
-    0% {
-        transform: translate(0,0) rotate(7deg);
-    }
-    100% {
-        transform: translate(450px,130vh) rotate(20deg);
-    }
-}
-
-@keyframes meteor2 {
-    0% {
-        transform: translate(0,0) rotate(-8deg);
-    }
-    100% {
-        transform: translate(-500px,130vh) rotate(-25deg);
-    }
-}
-
-@keyframes meteor3 {
-    0% {
-        transform: translate(0,0) rotate(8deg);
-    }
-    100% {
-        transform: translate(-300px,130vh) rotate(-10deg);
-    }
-}
-
-/* =========================
-   CONTENT
-========================= */
-
-.section {
-    width: min(1000px, 92%);
-    margin: 0 auto 35px;
-    padding: 35px;
-    background: rgba(4, 18, 32, .82);
-    border: 1px solid rgba(67, 190, 255, .2);
-    border-radius: 22px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 35px rgba(0, 100, 180, .08);
-}
-
-.section-title {
-    font-size: 25px;
-    margin-bottom: 25px;
-    color: #65ddff;
-}
-
-/* =========================
-   STATS
-========================= */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.stat {
-    text-align: center;
-    padding: 25px 15px;
-    background: rgba(0, 30, 55, .75);
-    border: 1px solid rgba(80, 210, 255, .18);
-    border-radius: 16px;
-}
-
-.stat-number {
-    font-size: 32px;
-    font-weight: bold;
-    color: #63ddff;
-}
-
-.stat-label {
-    margin-top: 8px;
-    color: #91aac0;
-}
-
-/* =========================
-   STREAM INFO
-========================= */
-
-.stream-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.info-box {
-    background: rgba(0, 28, 50, .75);
-    border-radius: 15px;
-    padding: 22px;
-    border: 1px solid rgba(74, 191, 255, .18);
-}
-
-.info-box span {
-    display: block;
-    color: #7794a9;
-    font-size: 13px;
-    margin-bottom: 8px;
-}
-
-.info-box strong {
-    font-size: 18px;
-}
-
-/* =========================
-   SUB BADGES
-========================= */
-
-.badges {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    align-items: center;
-}
-
-.badge {
-    position: relative;
-    min-height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-
-    background: rgba(0, 22, 40, .7);
-    border: 1px solid rgba(80, 190, 255, .18);
-    border-radius: 14px;
-
-    animation: badgeFloat 2.5s ease-in-out infinite;
-}
-
-.badge:nth-child(2) { animation-delay: .2s; }
-.badge:nth-child(3) { animation-delay: .4s; }
-.badge:nth-child(4) { animation-delay: .6s; }
-.badge:nth-child(5) { animation-delay: .8s; }
-.badge:nth-child(6) { animation-delay: 1s; }
-
-.badge img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transform: scale(1.8);
-    filter: drop-shadow(0 0 12px rgba(50,210,255,.6));
-}
-
-.badge::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,.35),
-        transparent
-    );
-    transform: translateX(-120%);
-    animation: shine 2.8s infinite;
-}
-
-.badge:nth-child(2)::after { animation-delay: .3s; }
-.badge:nth-child(3)::after { animation-delay: .6s; }
-.badge:nth-child(4)::after { animation-delay: .9s; }
-.badge:nth-child(5)::after { animation-delay: 1.2s; }
-.badge:nth-child(6)::after { animation-delay: 1.5s; }
-
-@keyframes badgeFloat {
-    0%,100% {
-        transform: translateY(0) scale(1);
-        box-shadow: 0 0 0 rgba(50,200,255,0);
-    }
-
-    50% {
-        transform: translateY(-7px) scale(1.04);
-        box-shadow: 0 0 22px rgba(50,200,255,.25);
-    }
-}
-
-@keyframes shine {
-    0% {
-        transform: translateX(-120%);
-    }
-
-    50%,100% {
-        transform: translateX(120%);
-    }
-}
-
-.tier {
-    position: absolute;
-    bottom: 5px;
-    z-index: 2;
-    font-size: 11px;
-    color: white;
-    background: rgba(0,0,0,.55);
-    padding: 3px 8px;
-    border-radius: 8px;
-}
-
-/* =========================
-   TOP GIFTERS
-========================= */
-
-.gifters {
-    display: grid;
-    gap: 12px;
-}
-
-.gifter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 17px 20px;
-    border-radius: 13px;
-    background: rgba(0, 27, 49, .75);
-    border: 1px solid rgba(74, 191, 255, .15);
-}
-
-.gifter-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.rank {
-    width: 38px;
-    height: 38px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: #073c61;
-    color: #72ddff;
-    font-weight: bold;
-}
-
-.amount {
-    color: #64dcff;
-    font-weight: bold;
-}
-
-/* =========================
-   LINKS
-========================= */
-
-.links {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.link {
-    display: block;
-    padding: 17px;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    border-radius: 12px;
-    background: #062b47;
-    border: 1px solid rgba(70, 190, 255, .2);
-    transition: .25s;
-}
-
-.link:hover {
-    transform: translateY(-3px);
-    background: #07466f;
-    box-shadow: 0 0 20px rgba(30,170,255,.2);
-}
-
-/* =========================
-   DONATION
-========================= */
-
-.donation {
-    text-align: center;
-}
-
-.donation a {
-    display: inline-block;
-    padding: 16px 30px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: white;
-    background: linear-gradient(135deg, #075083, #0a76b4);
-    box-shadow: 0 0 20px rgba(0,130,220,.2);
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    text-align: center;
-    padding: 45px 20px;
-    color: #607b8d;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width: 700px) {
-
-    .navbar {
-        height: auto;
-        min-height: 65px;
-        padding: 10px;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .nav-links {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .nav-links a {
-        padding: 8px 9px;
-        font-size: 12px;
-    }
-
-    .hero {
-        padding-top: 170px;
-    }
-
-    .hero-logo {
-        width: 120px;
-        height: 120px;
-    }
-
-    .section {
-        padding: 22px 15px;
-    }
-
-    .stats {
-        grid-template-columns: 1fr;
-    }
-
-    .stream-info {
-        grid-template-columns: 1fr;
-    }
-
-    .badges {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .links {
-        grid-template-columns: 1fr;
-    }
-
-    .car {
-        width: 120px;
-    }
 }
 </style>
 </head>
@@ -588,57 +395,327 @@ footer {
 <body>
 
 <div class="space">
-    <div class="stars"></div>
+<div class="stars"></div>
 </div>
 
-<!-- FALLING GTRs -->
-<img class="car car1" src="gtr-white.jpg" alt="">
-<img class="car car2" src="gtr-red.jpg" alt="">
-<img class="car car3" src="gtr-white.jpg" alt="">
+<!-- GTR METEORS -->
+<img class="car car1" src="gtr-white.jpg">
+<img class="car car2" src="gtr-red.jpg">
+<img class="car car3" src="gtr-white.jpg">
 
 <!-- NAVBAR -->
 <nav class="navbar">
 
-    <div class="logo-mini">
-        <img src="brof-logo.jpg" alt="BROF">
-        <span>BROF2</span>
-    </div>
+<div class="logo-mini">
+<img src="brof-logo.jpg">
+<span>BROF2</span>
+</div>
 
-    <div class="nav-links">
-        <a href="#home">HOME</a>
-        <a href="#donation">DONATION</a>
-        <a href="#support">SUPPORT</a>
-        <a href="#social">SOCIAL</a>
-        <a href="#mods">MODS</a>
-    </div>
+<div class="nav-links">
+<a href="#home">HOME</a>
+<a href="#donation">DONATION</a>
+<a href="#support">SUPPORT</a>
+<a href="#social">SOCIAL</a>
+<a href="#mods">MODS</a>
+</div>
 
 </nav>
 
 <!-- HOME -->
 <header class="hero" id="home">
 
-    <div class="hero-content">
+<div>
+<img class="hero-logo" src="brof-logo.jpg">
 
-        <img class="hero-logo" src="brof-logo.jpg" alt="BROF">
+<h1>BROF</h1>
 
-        <h1>BROF</h1>
-
-        <p>Car Programmer • Streamer • Kick</p>
-
-    </div>
+<p>Car Programmer • Streamer • Kick</p>
+</div>
 
 </header>
 
 <!-- KICK STATS -->
 <section class="section">
 
-    <h2 class="section-title">KICK STATS</h2>
+<h2 class="section-title">KICK STATS</h2>
 
-    <div class="stats">
+<div class="stats">
 
-        <div class="stat">
-            <div class="stat-number" id="followers">—</div>
-            <div class="stat-label">FOLLOWERS</div>
-        </div>
+<div class="stat">
+<div class="stat-number" id="followers">—</div>
+<div class="stat-label">FOLLOWERS</div>
+</div>
 
-        <div class="
+<div class="stat">
+<div class="stat-number" id="status">OFFLINE</div>
+<div class="stat-label">STATUS</div>
+</div>
+
+<div class="stat">
+<div class="stat-number" id="lastTime">—</div>
+<div class="stat-label">LAST STREAM</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- STREAM INFO -->
+<section class="section">
+
+<h2 class="section-title">STREAM INFO</h2>
+
+<div class="stream-info">
+
+<div class="info">
+<small>LAST STREAM</small>
+<strong id="streamTitle">Loading...</strong>
+</div>
+
+<div class="info">
+<small>CATEGORY</small>
+<strong id="category">Loading...</strong>
+</div>
+
+<div class="info">
+<small>STATUS</small>
+<strong id="liveStatus">Checking...</strong>
+</div>
+
+<div class="info">
+<small>KICK</small>
+<strong>kick.com/brof2</strong>
+</div>
+
+</div>
+
+</section>
+
+<!-- SUB BADGES -->
+<section class="section">
+
+<h2 class="section-title">BROF SUB BADGES</h2>
+
+<div class="badges">
+
+<div class="badge">
+<img src="sub-badges.jpg">
+<span class="tier">TIER 1</span>
+</div>
+
+<div class="badge">
+<img src="sub-badges.jpg">
+<span class="tier">TIER 2</span>
+</div>
+
+<div class="badge">
+<img src="sub-badges.jpg">
+<span class="tier">TIER 3</span>
+</div>
+
+<div class="badge">
+<img src="sub-badges.jpg">
+<span class="tier">TIER 4</span>
+</div>
+
+<div class="badge">
+<img src="sub-badges.jpg">
+<span class="tier">TIER 5</span>
+</div>
+
+<div class="badge">
+<img src="sub-badges.jpg">
+<span class="tier">TIER 6</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- TOP GIFTERS -->
+<section class="section">
+
+<h2 class="section-title">TOP GIFTERS</h2>
+
+<div class="gifters">
+
+<div class="gifter">
+<div class="gleft">
+<div class="rank">1</div>
+<strong>TOP GIFTER</strong>
+</div>
+<span class="amount">—</span>
+</div>
+
+<div class="gifter">
+<div class="gleft">
+<div class="rank">2</div>
+<strong>TOP GIFTER</strong>
+</div>
+<span class="amount">—</span>
+</div>
+
+<div class="gifter">
+<div class="gleft">
+<div class="rank">3</div>
+<strong>TOP GIFTER</strong>
+</div>
+<span class="amount">—</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- DONATION -->
+<section class="section donation" id="donation">
+
+<h2 class="section-title">DONATION</h2>
+
+<p style="color:#91aac0;margin-bottom:20px">
+Support BROF ❤️
+</p>
+
+<a href="https://tip.dokan.sa/brof2" target="_blank">
+DONATE NOW
+</a>
+
+</section>
+
+<!-- SUPPORT -->
+<section class="section" id="support">
+
+<h2 class="section-title">SUPPORT</h2>
+
+<div class="links">
+
+<a class="link" href="https://kick.com/brof2" target="_blank">
+KICK
+</a>
+
+<a class="link" href="https://discord.gg/Migo" target="_blank">
+DISCORD
+</a>
+
+</div>
+
+</section>
+
+<!-- SOCIAL -->
+<section class="section" id="social">
+
+<h2 class="section-title">SOCIAL</h2>
+
+<div class="links">
+
+<a class="link" href="https://tiktok.com/@b80" target="_blank">
+TIKTOK
+</a>
+
+<a class="link" href="https://x.com/N4wav_" target="_blank">
+X
+</a>
+
+<a class="link" href="https://instagram.com/n4wav" target="_blank">
+INSTAGRAM
+</a>
+
+<a class="link" href="https://discord.gg/Migo" target="_blank">
+DISCORD
+</a>
+
+</div>
+
+</section>
+
+<!-- MODS -->
+<section class="section" id="mods">
+
+<h2 class="section-title">MODS</h2>
+
+<p style="text-align:center;color:#91aac0">
+BROF MODERATION TEAM
+</p>
+
+</section>
+
+<footer>
+© 2026 BROF2 — All Rights Reserved
+</footer>
+
+<script>
+
+async function loadKick(){
+
+try{
+
+const r=await fetch("https://kick.com/api/v2/channels/brof2");
+
+if(!r.ok) throw new Error();
+
+const d=await r.json();
+
+/* FOLLOWERS */
+
+if(d.followers_count!==undefined){
+
+document.getElementById("followers").textContent =
+Number(d.followers_count).toLocaleString();
+
+}
+
+/* LIVE */
+
+if(d.livestream){
+
+document.getElementById("status").textContent="LIVE";
+document.getElementById("liveStatus").textContent="LIVE";
+
+if(d.livestream.session_title){
+
+document.getElementById("streamTitle").textContent =
+d.livestream.session_title;
+
+}
+
+if(d.livestream.categories &&
+d.livestream.categories.length){
+
+document.getElementById("category").textContent =
+d.livestream.categories[0].name;
+
+}
+
+}else{
+
+document.getElementById("status").textContent="OFFLINE";
+document.getElementById("liveStatus").textContent="OFFLINE";
+
+document.getElementById("streamTitle").textContent =
+"آخر بث غير متاح";
+
+document.getElementById("category").textContent =
+"غير متاح";
+
+}
+
+}catch(e){
+
+document.getElementById("followers").textContent="—";
+document.getElementById("status").textContent="OFFLINE";
+document.getElementById("liveStatus").textContent="OFFLINE";
+document.getElementById("streamTitle").textContent="kick.com/brof2";
+document.getElementById("category").textContent="Kick";
+
+}
+
+}
+
+loadKick();
+
+setInterval(loadKick,60000);
+
+</script>
+
+</body>
+    </html>
